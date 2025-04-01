@@ -1,7 +1,8 @@
 import "./App.css";
+import Message from "./part-1/2- Getting Started with React/5- Creating a React Component/Message.tsx";
 
 function App() {
-  return <h1 className="text-3xl">Hello</h1>;
+  return <Message />;
 }
 
 export default App;
