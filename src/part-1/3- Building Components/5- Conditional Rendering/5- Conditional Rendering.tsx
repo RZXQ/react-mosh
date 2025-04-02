@@ -14,7 +14,7 @@ export default function ListGroup() {
       <ul>
         {/* 2. Map through items array to render each item as <li>. If items is empty, this results in an empty <ul> with no <li> inside. */}
         {items.map((item) => (
-          <li>{item}</li>
+          <li key={item}>{item}</li>
         ))}
       </ul>
 
