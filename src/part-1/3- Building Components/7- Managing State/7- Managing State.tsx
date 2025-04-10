@@ -61,6 +61,26 @@
    - When you reuse components, each one remembers its own separate state.
 */
 
+/* 📌 Section E: When to directly use function reference in onClick, and when to wrap in arrow function?
+
+✅ E1. Using function reference directly (no parentheses, no arrow function):
+  Example:
+    <button onClick={handleClick}>Click Me</button>
+
+  Explanation:
+    - When your event-handler function doesn't require custom arguments (other than React's event parameter), you can pass it directly.
+    - React will automatically call it at the correct time (upon click).
+
+⚠️ E2. Using inline arrow function (Why can't you directly invoke the function?):
+  Example:
+    <button onClick={() => handleClick(id)}>Click Me</button>
+
+  Explanation:
+    - If you directly invoke the function (e.g., onClick={handleClick(id)}), JavaScript immediately runs it during render. This is usually unintended and will make your handler execute even without a click event.
+    - Wrapping it in an inline arrow function prevents immediate invocation, delaying execution until the actual click event occurs.
+    - It allows you to properly pass extra arguments or custom logic to the handler without immediate execution at render.
+*/
+
 import { useState } from "react";
 
 export default function ListGroup() {
