@@ -1,5 +1,5 @@
 import "./App.css";
-import ListGroup from "./part-1/4- Styling Components/6- Inline Styles/6- Inline Styles.tsx";
+import ListGroup from "./6- Inline Styles.tsx";
 
 function App() {
   const heading = "Countries";
