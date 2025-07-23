@@ -26,3 +26,5 @@ dist-ssr
 *.sln
 *.sw?
 /src/dev/previews.tsx
+src/App.css
+src/App.tsx
