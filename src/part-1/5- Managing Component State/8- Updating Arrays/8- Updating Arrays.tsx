@@ -5,10 +5,10 @@ export default function Tag() {
 
   const handleClick = () => {
     // Add
-    // setTags([...tags, "exciting"]);
+    setTags([...tags, "exciting"]);
 
     // Remove
-    // setTags(tags.filter((tag) => tag !== "happy"));
+    setTags(tags.filter((tag) => tag !== "happy"));
 
     // Update
     setTags(tags.map((tag) => (tag === "happy" ? "happiness" : tag)));
