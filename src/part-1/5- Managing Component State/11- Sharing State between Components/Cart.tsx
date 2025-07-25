@@ -1,6 +1,6 @@
 interface Props {
   cartItems: string[];
-  onClear: (items: string[]) => void;
+  onClear: () => void;
 }
 
 const Cart = ({ cartItems, onClear }: Props) => {
@@ -11,7 +11,7 @@ const Cart = ({ cartItems, onClear }: Props) => {
           <li key={item}>{item}</li>
         ))}
       </ul>
-      <button className="bg-red-300" onClick={() => onClear(cartItems)}>
+      <button className="bg-red-300" onClick={() => onClear()}>
         Clear
       </button>
     </>
