@@ -1,8 +1,3 @@
-interface Props {
-  expenses: Expense[];
-  onDelete: (id: number) => void;
-}
-
 interface Expense {
   id: number;
   description: string;
@@ -10,7 +5,14 @@ interface Expense {
   category: string;
 }
 
+interface Props {
+  expenses: Expense[];
+  onDelete: (id: number) => void;
+}
+
 export default function ExpenseList({ expenses, onDelete }: Props) {
+  if (expenses.length === 0) return null;
+
   return (
     <table className="table">
       <thead>
@@ -23,13 +25,13 @@ export default function ExpenseList({ expenses, onDelete }: Props) {
       </thead>
       <tbody>
         {expenses.map((expense) => (
-          <tr>
+          <tr key={expense.id}>
             <td>{expense.description}</td>
             <td>{expense.amount}</td>
             <td>{expense.category}</td>
             <td>
               <button
-                className="btn btn-error"
+                className="btn btn-outline btn-error"
                 onClick={() => {
                   onDelete(expense.id);
                 }}
@@ -39,13 +41,20 @@ export default function ExpenseList({ expenses, onDelete }: Props) {
             </td>
           </tr>
         ))}
+      </tbody>
+      <tfoot>
         <tr>
           <td>Total</td>
           <td>
-            {expenses.reduce((total, expense) => total + expense.amount, 0)}
+            $
+            {expenses
+              .reduce((total, expense) => total + expense.amount, 0)
+              .toFixed(2)}
           </td>
+          <td></td>
+          <td></td>
         </tr>
-      </tbody>
+      </tfoot>
     </table>
   );
 }
