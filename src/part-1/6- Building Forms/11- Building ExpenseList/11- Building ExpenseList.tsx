@@ -10,7 +10,7 @@ export default function ExpenseForm() {
     amount: z.number({ error: "Amount is required." }),
     category: z
       .string({ error: "Category is required." })
-      .min(1, { error: "Catogory is required." }),
+      .min(1, { error: "Category is required." }),
   });
 
   type FormData = z.infer<typeof schema>;
