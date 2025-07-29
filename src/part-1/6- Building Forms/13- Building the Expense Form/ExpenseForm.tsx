@@ -1,6 +1,7 @@
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod/v4";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { categories } from "../../../App";
 
 export default function ExpenseForm() {
   const schema = z.object({
@@ -28,7 +29,7 @@ export default function ExpenseForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="mb-5">
       <div className="mb-5">
         <div className="mb-3">
           <label htmlFor="description">Description</label>
@@ -59,11 +60,13 @@ export default function ExpenseForm() {
         <div className="mb-3">
           <label htmlFor="category">Category</label>
         </div>
-        <select className="select" {...register("category")}>
+        <select className="select" id="category" {...register("category")}>
           <option value=""></option>
-          <option value="Groceries">Groceries</option>
-          <option value="Utilities">Utilities</option>
-          <option value="Entertainment">Entertainment</option>
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
         </select>
         {errors.category && (
           <p className="text-error">{errors.category.message}</p>
