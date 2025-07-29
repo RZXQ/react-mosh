@@ -1,11 +1,8 @@
-import "./App.css";
 import { useState } from "react";
 import { produce } from "immer";
 import ExpenseForm from "./ExpenseForm";
 import ExpenseList from "../11- Building ExpenseList/11- Building ExpenseList";
 import ExpenseFilter from "../12- Building ExpenseFilter/12- Building ExpenseFilter.tsx";
-
-export const categories = ["Groceries", "Utilities", "Entertainment"];
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");

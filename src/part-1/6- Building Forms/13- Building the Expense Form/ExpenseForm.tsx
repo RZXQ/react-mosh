@@ -1,7 +1,7 @@
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod/v4";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { categories } from "../../../App";
+import categories from "../14- Integrating with React Hook Form and Zod/categories.ts";
 
 export default function ExpenseForm() {
   const schema = z.object({
