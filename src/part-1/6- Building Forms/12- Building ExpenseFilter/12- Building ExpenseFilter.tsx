@@ -1,4 +1,4 @@
-import { categories } from "../13- Building the Expense Form/App.tsx";
+import categories from "../14- Integrating with React Hook Form and Zod/categories.ts";
 
 interface Props {
   onSelectCategory: (category: string) => void;
