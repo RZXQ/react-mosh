@@ -3,18 +3,18 @@ import { z } from "zod/v4";
 import { zodResolver } from "@hookform/resolvers/zod";
 import categories from "./categories.ts";
 
+const schema = z.object({
+  description: z
+    .string()
+    .min(3, { error: "Description should be at least 3 characters." })
+    .max(50),
+  amount: z.number({ error: "Amount is required." }).min(0.01).max(100_000),
+  category: z.enum(categories, { error: "Category is required." }),
+});
+
+type ExpenseFormData = z.infer<typeof schema>;
+
 export default function ExpenseForm() {
-  const schema = z.object({
-    description: z
-      .string()
-      .min(3, { error: "Description should be at least 3 characters." })
-      .max(50),
-    amount: z.number({ error: "Amount is required." }).min(0.01).max(100_000),
-    category: z.enum(categories, { error: "Category is required." }),
-  });
-
-  type ExpenseFormData = z.infer<typeof schema>;
-
   const {
     register,
     handleSubmit,

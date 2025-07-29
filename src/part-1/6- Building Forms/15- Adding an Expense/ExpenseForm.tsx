@@ -1,35 +1,41 @@
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod/v4";
 import { zodResolver } from "@hookform/resolvers/zod";
-import categories from "../14- Integrating with React Hook Form and Zod/categories.ts";
+import categories from "./categories.ts";
 
 const schema = z.object({
   description: z
     .string()
-    .min(3, { error: "Description should be at least 3 characters." }),
-  amount: z.number({ error: "Amount is required." }),
-  category: z.string().min(1, { error: "Category is required." }),
+    .min(3, { error: "Description should be at least 3 characters." })
+    .max(50),
+  amount: z.number({ error: "Amount is required." }).min(0.01).max(100_000),
+  category: z.enum(categories, { error: "Category is required." }),
 });
 
-type FormData = z.infer<typeof schema>;
+export type ExpenseFormData = z.infer<typeof schema>;
 
-export default function ExpenseForm() {
+interface Props {
+  onSubmit: (expense: ExpenseFormData) => void;
+}
+
+export default function ExpenseForm({ onSubmit }: Props) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm<FormData>({
+  } = useForm<ExpenseFormData>({
     resolver: zodResolver(schema),
-    defaultValues: {
-      category: "",
-    },
   });
-  const onSubmit = (data: FieldValues) => {
-    console.log(data);
-  };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="mb-5">
+    <form
+      onSubmit={handleSubmit((data: ExpenseFormData) => {
+        onSubmit(data);
+        reset();
+      })}
+      className="mb-5"
+    >
       <div className="mb-5">
         <div className="mb-3">
           <label htmlFor="description">Description</label>
