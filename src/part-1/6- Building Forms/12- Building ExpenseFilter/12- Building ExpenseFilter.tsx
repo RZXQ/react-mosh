@@ -1,4 +1,4 @@
-import { categories } from "../../../App.tsx";
+import { categories } from "../13- Building the Expense Form/App.tsx";
 
 interface Props {
   onSelectCategory: (category: string) => void;
