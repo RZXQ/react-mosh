@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import { produce } from "immer";
-import ExpenseList from "./11- Building ExpenseList.tsx";
+import ExpenseList from "./ExpenseList.tsx";
 
 function App() {
   const [expenses, setExpenses] = useState([

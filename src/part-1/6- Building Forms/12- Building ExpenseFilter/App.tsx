@@ -1,8 +1,8 @@
 import "./App.css";
 import { useState } from "react";
 import { produce } from "immer";
-import ExpenseFilter from "./12- Building ExpenseFilter.tsx";
-import ExpenseList from "../11- Building ExpenseList/11- Building ExpenseList.tsx";
+import ExpenseFilter from "./ExpenseFilter.tsx";
+import ExpenseList from "../11- Building ExpenseList/ExpenseList.tsx";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
